@@ -26,8 +26,11 @@ from auto_editor.vanparse import ArgumentParser
 
 
 def main_options(parser: ArgumentParser) -> ArgumentParser:
+
     parser.add_required("input", nargs="*", metavar="[file | url ...] [options]")
+
     parser.add_text("Editing Options:")
+
     parser.add_argument(
         "--margin",
         "-m",
@@ -273,6 +276,7 @@ def main_options(parser: ArgumentParser) -> ArgumentParser:
 
 
 def main() -> None:
+   
     subcommands = ("test", "info", "levels", "subdump", "desc", "repl", "palet")
 
     if len(sys.argv) > 1 and sys.argv[1] in subcommands:
@@ -283,7 +287,9 @@ def main() -> None:
         return
 
     ff_color = "AV_LOG_FORCE_NOCOLOR"
+
     no_color = bool(environ.get("NO_COLOR")) or bool(environ.get(ff_color))
+
     log = Log(no_color=no_color)
 
     args = main_options(ArgumentParser("Auto-Editor")).parse_args(
@@ -321,6 +327,7 @@ def main() -> None:
         log.error("You need to give auto-editor an input file.")
 
     temp = setup_tempdir(args.temp_dir, log)
+    
     log = Log(args.debug, args.quiet, temp, args.progress == "machine", no_color)
     log.debug(f"Temp Directory: {temp}")
 
