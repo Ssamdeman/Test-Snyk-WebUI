@@ -20,9 +20,6 @@ This is my test project
 
 
 
-
-
-
 **Auto-Editor** is a command line application for automatically **editing video and audio** by analyzing a variety of methods, most notably audio loudness.
 
 ---
